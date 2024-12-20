@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - 12
+before_install:
+  - pip install --user codecov
+install:
+  - npm install
+script:
+  - npm run test
+  - codecov --file coverage/*.json --disable search -t 867b61a5-67a6-48ad-acb5-305df0184cd4
