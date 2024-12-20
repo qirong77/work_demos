@@ -9,22 +9,22 @@ registerCommand({
   id: "run",
   desc: "执行当前Vscode激活的窗口的tab文件",
   hadler: () => {
-    const filePath = process.argv[3];
+    const inputFilePath = process.argv[3] || '';
     const fs = readFileSync(COMMOND_CONFIG.vscodeWindowStatusFilePath,'utf-8');
     const activeTab = JSON.parse(fs).activeTab as string; 
-    const finalPath = filePath || activeTab;
+    const finalPath = inputFilePath || activeTab;
     if(!finalPath) {
       logInfo('当前没有激活的tab或者没有传入文件');
       return;
     }
-    console.log(chalk.green(`准备执行文件: ${filePath}`))
-    if(filePath.endsWith('.ts')) {
+    console.log(chalk.green(`准备执行文件: ${finalPath}`))
+    if(finalPath.endsWith('.ts')) {
       // 如果报错: npm i -g tsx
-      runNode18(`npx tsx ${filePath}`);
+      runNode18(`npx tsx ${finalPath}`);
       return
     }
-    if(['.js','.mjs','cjs'].some(e => filePath.endsWith(e))) {
-      execCommand(`node ${filePath}`);
+    if(['.js','.mjs','cjs'].some(e => finalPath.endsWith(e))) {
+      execCommand(`node ${finalPath}`);
       return
     }
   },
