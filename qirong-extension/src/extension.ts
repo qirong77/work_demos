@@ -3,7 +3,7 @@ import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { CONFIG } from "./common/config";
 import { debounce } from "./common/debounce";
 // 只在一个函数进行文件操作,防止冲突!
-const debouceUpdateWindowStatusFile = debounce(updateWindowStatusFile, 1000);
+const debouceUpdateWindowStatusFile = debounce(updateWindowStatusFile, 800);
 export function activate(context: vscode.ExtensionContext) {
     vscode.window.onDidChangeActiveTextEditor(debouceUpdateWindowStatusFile);
 }
@@ -26,5 +26,5 @@ function updateWindowStatusFile() {
         vscode.window.showInformationMessage(`qirong-extension出错: ${error}`);
         writeFileSync(CONFIG.path, "{}", "utf-8");
     }
-    vscode.window.showInformationMessage(`更新windowStatus${workspace + "\n" + activeTab}`);
+    // vscode.window.showInformationMessage(`更新windowStatus${workspace + "\n" + activeTab}`);
 }
