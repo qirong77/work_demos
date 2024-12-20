@@ -22,7 +22,6 @@ registerCommand({
             "merge : 解决冲突",
             "chore: 构建过程或辅助工具的变动",
             "test: 增加测试用例",
-            "release: 发布",
             "init: 初始化项目",
             "perf: 性能优化",
             "docs: 修改文档",
