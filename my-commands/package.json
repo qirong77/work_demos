@@ -1,0 +1,26 @@
+{
+  "name": "my-command",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node ./dist/qr.cjs",
+    "build": "esbuild ./src/index.ts --bundle --platform=node --target=node12 --outfile=./dist/qr.cjs"
+  },
+  "license": "ISC",
+  "bin": {
+    "qr": "./dist/qr.cjs"
+  },
+  "dependencies": {
+    "@types/node": "^20.11.28",
+    "chalk": "^5.3.0",
+    "esbuild": "^0.20.2",
+    "inquirer": "^9.2.16",
+    "simple-git": "^3.25.0",
+    "tslib": "^2.6.2"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^9.0.7",
+    "typescript": "^5.4.2"
+  }
+}

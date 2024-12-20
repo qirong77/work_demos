@@ -1,0 +1,7 @@
+import './commit'
+import './dev'
+import './reset1'
+import './run'
+import './merge'
+import './cloneToDesktop'
+import './mergeMaser'
