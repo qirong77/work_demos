@@ -41,7 +41,8 @@ registerCommand({
         logError("出现冲突: " + hasConflict);
         return;
       }
-      runExecSync(`git add . && git commit -m "${commitMessage}"`);
+      const messageAll = process.argv.slice(3).join(' ');
+      runExecSync(`git add . && git commit -m "${messageAll}"`);
       runExecSync('git push')
     }
   },
