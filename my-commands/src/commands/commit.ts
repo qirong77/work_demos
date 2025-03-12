@@ -30,19 +30,19 @@ registerCommand({
       ];
       inquirer.prompt(questions).then((answers) => {
         commitMessage = answers.action;
-        runGitAddAllAndCommit();
+        runGitAddAllAndCommit(answers.action);
       });
       return;
     }
     runGitAddAllAndCommit();
-    function runGitAddAllAndCommit() {
+    function runGitAddAllAndCommit(msg='') {
       const hasConflict = getExecString("git diff --name-only --diff-filter=U");
       if (hasConflict) {
         logError("出现冲突: " + hasConflict);
         return;
       }
       const messageAll = process.argv.slice(3).join(' ');
-      runExecSync(`git add . && git commit -m "${messageAll}"`);
+      runExecSync(`git add . && git commit -m "${msg || messageAll}"`);
       runExecSync('git push')
     }
   },
